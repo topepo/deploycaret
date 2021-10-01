@@ -1,0 +1,54 @@
+---
+title: "bivariate_classification"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+## Train a model
+
+```{r}
+library(caret)
+data(bivariate, package = "modeldata")
+
+set.seed(1)
+svm_fit <-
+  train(
+    Class ~ .,
+    data = bivariate_train,
+    method = "svmRadial",
+    tuneLength = 5,
+    preProc = c("BoxCox", "center", "scale"),
+    trControl = trainControl(method = "cv")
+  )
+```
+
+## Pin the model and create the API:
+
+```{r eval=FALSE}
+library(deploycaret)
+library(pins)
+library(plumber)
+
+model_board <- board_temp()
+model_board %>% pin_model(svm_fit, model_id = "biv_svm_caret")
+
+pr() %>%
+    pr_model(model_board, "biv_svm_caret", type = "class") %>%
+    pr_run(port = 8088)
+```
+
+## Make predictions from API:
+
+```{r eval=FALSE}
+library(caret)
+data("bivariate", package = "modeldata")
+new_biv <- dplyr::select(bivariate_test, -Class)
+
+predict_api("http://127.0.0.1:8088/predict", new_biv)
+```
