@@ -30,7 +30,7 @@ Imports:
     rlang,
     tune
 Suggests: 
-    caret,
+    caret (>= 6.0-90),
     knitr,
     modeldata,
     ranger,
@@ -42,7 +42,8 @@ VignetteBuilder:
     knitr
 Remotes: 
     juliasilge/modelops,
-    rstudio/pins
+    rstudio/pins,
+    topepo/caret/pkg/caret
 Config/testthat/edition: 3
 Encoding: UTF-8
 LazyData: false

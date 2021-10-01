@@ -93,9 +93,9 @@ library(deploycaret)
 library(pins)
 
 model_board <- board_temp()
-m <- modelops(rf_fit, "sacramento_rf_caret", model_board, data = predictors)
+m <- modelops(rf_fit, "sacramento_rf_caret", model_board)
 modelops_pin_write(m)
-#> Creating new version '20211001T015648Z-aae94'
+#> Creating new version '20211001T162030Z-a14e0'
 #> Writing to pin 'sacramento_rf_caret'
 ```
 

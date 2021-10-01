@@ -8,7 +8,6 @@
   model,
   model_name,
   board,
-  data,
   ...,
   desc = NULL,
   metadata = list(),
@@ -24,9 +23,6 @@
 \item{board}{A pin board to store and version the \code{model}, created by
 \code{\link[pins:board_folder]{pins::board_folder()}}, \code{\link[pins:board_rsconnect]{pins::board_rsconnect()}}, or other \code{board_}
 function from the pins package.}
-
-\item{data}{A data frame of \emph{predictor} columns in the same format that was
-given to the modeling function.}
 
 \item{...}{Other method-specific arguments passed to \code{\link[modelops:modelops_create_ptype]{modelops_slice_zero()}}
 to compute an input data prototype.}
