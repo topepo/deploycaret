@@ -43,7 +43,7 @@ VignetteBuilder:
 Remotes: 
     juliasilge/modelops,
     rstudio/pins,
-    topepo/caret/pkg/caret
+    topepo/caret/pkg
 Config/testthat/edition: 3
 Encoding: UTF-8
 LazyData: false
