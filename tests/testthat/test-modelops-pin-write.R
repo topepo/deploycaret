@@ -6,7 +6,7 @@ lm_fit <- train(mpg ~ ., data = mtcars, method = "lm", trControl = trainControl(
 
 test_that("can pin a model", {
     b <- board_temp()
-    m <- modelops(lm_fit, "mtcars_lm", b, data = mtcars[, -1])
+    m <- modelops(lm_fit, "mtcars_lm", b)
     modelops_pin_write(m)
     # expect_equal(
     #     pin_read(b, "mtcars_lm"),
@@ -19,7 +19,7 @@ test_that("can pin a model", {
 
 test_that("default metadata for model", {
     b <- board_temp()
-    m <- modelops(lm_fit, "mtcars_lm", b, data = mtcars[, -1])
+    m <- modelops(lm_fit, "mtcars_lm", b)
     modelops_pin_write(m)
     meta <- pin_meta(b, "mtcars_lm")
     expect_equal(meta$user, list())
@@ -28,8 +28,8 @@ test_that("default metadata for model", {
 
 test_that("user can supply metadata for model", {
     b <- board_temp()
-    m <- modelops(lm_fit, "mtcars_lm", b, data = mtcars[, -1])
-    m <- modelops(lm_fit, "mtcars_lm", b, data = mtcars[, -1],
+    m <- modelops(lm_fit, "mtcars_lm", b)
+    m <- modelops(lm_fit, "mtcars_lm", b,
                   desc = "Linear regression for mtcars",
                   metadata = list(metrics = 1:10))
     modelops_pin_write(m)
@@ -41,7 +41,7 @@ test_that("user can supply metadata for model", {
 test_that("can read a pinned model", {
     skip("different environments")
     b <- board_temp()
-    m <- modelops(lm_fit, "mtcars_lm", b, data = mtcars[, -1])
+    m <- modelops(lm_fit, "mtcars_lm", b)
     modelops_pin_write(m)
     m1 <- modelops_pin_read(b, "mtcars_lm")
     meta <- pin_meta(b, "mtcars_lm")

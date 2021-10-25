@@ -70,7 +70,7 @@ library(deploycaret)
 library(pins)
 
 model_board <- board_temp()
-m <- modelops(rf_fit, "sacramento_rf_caret", model_board, data = predictors)
+m <- modelops(rf_fit, "sacramento_rf_caret", model_board)
 modelops_pin_write(m)
 ```
 

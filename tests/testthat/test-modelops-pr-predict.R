@@ -8,7 +8,7 @@ lm_fit <- train(mpg ~ ., data = mtcars, method = "lm", trControl = trainControl(
 test_that("default endpoint", {
   b <- board_temp()
 
-  m <- modelops(lm_fit, "mtcars_lm", b, data = mtcars[, -1])
+  m <- modelops(lm_fit, "mtcars_lm", b)
   modelops_pin_write(m)
 
   p <- pr() %>% modelops_pr_predict(m)
