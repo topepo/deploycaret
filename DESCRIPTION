@@ -41,9 +41,7 @@ Suggests:
 VignetteBuilder: 
     knitr
 Remotes: 
-    juliasilge/modelops,
-    rstudio/pins,
-    topepo/caret/tree/master/pkg/caret
+    juliasilge/modelops
 Config/testthat/edition: 3
 Encoding: UTF-8
 LazyData: false
